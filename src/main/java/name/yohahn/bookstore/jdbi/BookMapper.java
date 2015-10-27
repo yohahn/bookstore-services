@@ -1,5 +1,6 @@
 package name.yohahn.bookstore.jdbi;
 
+import com.google.common.base.Strings;
 import name.yohahn.bookstore.domain.model.Book;
 import org.joda.time.DateTime;
 import org.skife.jdbi.v2.StatementContext;
@@ -18,9 +19,14 @@ public class BookMapper implements ResultSetMapper<Book> {
             int i,
             ResultSet rs,
             StatementContext ctx) throws SQLException {
+
+        DateTime published = null;
+        if (rs.getDate("published") != null) {
+            published = new DateTime(rs.getDate("published"));
+        }
         return new Book(
                 rs.getLong("id"),
                 rs.getString("title"),
-                new DateTime(rs.getDate("published")));
+                published);
     }
 }
