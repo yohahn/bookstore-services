@@ -5,11 +5,15 @@ import io.katharsis.queryParams.RequestParams;
 import io.katharsis.repository.ResourceRepository;
 import name.yohahn.bookstore.domain.model.Book;
 import name.yohahn.bookstore.jdbi.BookDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by yohahn.kim on 10/23/15.
  */
 public class BookRepository implements ResourceRepository<Book, Long> {
+
+    private final static Logger logger = LoggerFactory.getLogger(BookRepository.class);
 
     private BookDAO bookDAO;
 
@@ -26,6 +30,7 @@ public class BookRepository implements ResourceRepository<Book, Long> {
 
     @Override
     public Iterable<Book> findAll(RequestParams requestParams) {
+        logger.info("getting all records");
         return bookDAO.findAll();
     }
 
@@ -42,10 +47,13 @@ public class BookRepository implements ResourceRepository<Book, Long> {
 
     @Override
     public <S extends Book> S save(S book) {
+        logger.info("attempting to save");
         if (book.getId() == null) {
+            logger.info("create");
             long id = bookDAO.create(book.getTitle());
             book.setId(id);
         } else {
+            logger.info("update");
             bookDAO.update(book.getId(), book.getTitle());
         }
         return book;

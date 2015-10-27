@@ -11,7 +11,8 @@
 
     <properties>
         <dropwizard.version>0.8.4</dropwizard.version>
-        <katharsis.version>1.0.0</katharsis.version>
+        <katharsis-core.version>1.0.1</katharsis-core.version>
+        <katharsis-rs.version>1.0.2</katharsis-rs.version>
         <mysql.jdbc.version>5.1.37</mysql.jdbc.version>
         <guice.version>4.0</guice.version>
         <junit.version>4.12</junit.version>
@@ -36,12 +37,12 @@
         <dependency>
             <groupId>io.katharsis</groupId>
             <artifactId>katharsis-core</artifactId>
-            <version>${katharsis.version}</version>
+            <version>${katharsis-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.katharsis</groupId>
             <artifactId>katharsis-rs</artifactId>
-            <version>${katharsis.version}</version>
+            <version>${katharsis-rs.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.fasterxml.jackson.core</groupId>

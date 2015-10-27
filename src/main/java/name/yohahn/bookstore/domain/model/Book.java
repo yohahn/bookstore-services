@@ -14,6 +14,10 @@ public class Book {
 
     private String title;
 
+    public Book() {
+        // Jackson deserialization
+    }
+
     public Book(Long id, String title) {
         this.id = id;
         this.title = title;
