@@ -20,7 +20,9 @@ import org.skife.jdbi.v2.DBI;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import java.text.SimpleDateFormat;
 import java.util.EnumSet;
+import java.util.TimeZone;
 
 import static io.katharsis.rs.KatharsisProperties.RESOURCE_DEFAULT_DOMAIN;
 import static io.katharsis.rs.KatharsisProperties.RESOURCE_SEARCH_PACKAGE;

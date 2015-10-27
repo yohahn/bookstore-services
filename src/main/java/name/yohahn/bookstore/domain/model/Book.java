@@ -2,6 +2,7 @@ package name.yohahn.bookstore.domain.model;
 
 import io.katharsis.resource.annotations.JsonApiId;
 import io.katharsis.resource.annotations.JsonApiResource;
+import org.joda.time.DateTime;
 
 /**
  * Created by yohahn.kim on 10/23/15.
@@ -14,13 +15,16 @@ public class Book {
 
     private String title;
 
+    private DateTime published;
+
     public Book() {
         // Jackson deserialization
     }
 
-    public Book(Long id, String title) {
+    public Book(Long id, String title, DateTime published) {
         this.id = id;
         this.title = title;
+        this.published = published;
     }
 
     public Long getId() {
@@ -37,5 +41,13 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public DateTime getPublished() {
+        return published;
+    }
+
+    public void setPublished(DateTime published) {
+        this.published = published;
     }
 }

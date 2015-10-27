@@ -16,4 +16,9 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="2" author="yohahn">
+        <addColumn tableName="book">
+            <column name="published" type="date"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

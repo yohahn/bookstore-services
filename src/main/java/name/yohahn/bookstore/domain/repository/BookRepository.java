@@ -5,6 +5,7 @@ import io.katharsis.queryParams.RequestParams;
 import io.katharsis.repository.ResourceRepository;
 import name.yohahn.bookstore.domain.model.Book;
 import name.yohahn.bookstore.jdbi.BookDAO;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,11 +51,11 @@ public class BookRepository implements ResourceRepository<Book, Long> {
         logger.info("attempting to save");
         if (book.getId() == null) {
             logger.info("create");
-            long id = bookDAO.create(book.getTitle());
+            long id = bookDAO.create(book.getTitle(), DateTime.now());
             book.setId(id);
         } else {
             logger.info("update");
-            bookDAO.update(book.getId(), book.getTitle());
+            bookDAO.update(book.getId(), book.getTitle(), book.getPublished());
         }
         return book;
     }
